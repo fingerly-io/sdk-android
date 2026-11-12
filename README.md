@@ -14,11 +14,14 @@ repositories {
 }
 
 dependencies {
-    implementation("io.fingerly:fingerly:0.1.0")
+    implementation("io.fingerly:fingerly:0.2.0")
 }
 ```
 
-See [INSTALL.md](INSTALL.md) for the details.
+See [INSTALL.md](INSTALL.md) for the details, including the optional
+installed-app checks (`io.fingerly:fingerly-app-checks`), the optional Play
+Integrity provider (`io.fingerly:fingerly-play-integrity`) and the answers for
+Google Play's Data safety form.
 
 ## Use
 
