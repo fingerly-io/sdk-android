@@ -112,9 +112,6 @@ Change the version number, of both artifacts if you use the installed-app
 checks. Every published version stays available, and a published version never
 changes.
 
-Versions after 0.1.0 no longer put the `<queries>` block in the core artifact.
-To keep the installed-app checks, add `fingerly-app-checks`.
-
 ## Next
 
 Follow the guide at <https://docs.fingerly.io/docs/sdks/android> to make your
