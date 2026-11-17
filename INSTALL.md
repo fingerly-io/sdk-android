@@ -22,7 +22,7 @@ Otherwise add the `maven` line to the `repositories` block of your module's
 
 ```kotlin
 dependencies {
-    implementation("io.fingerly:fingerly:0.2.0")
+    implementation("io.fingerly:fingerly:0.3.0")
 }
 ```
 
@@ -40,15 +40,24 @@ package visibility it declares. Add it only if your app can:
 
 ```kotlin
 dependencies {
-    implementation("io.fingerly:fingerly:0.2.0")
-    implementation("io.fingerly:fingerly-app-checks:0.2.0")
+    implementation("io.fingerly:fingerly:0.3.0")
+    implementation("io.fingerly:fingerly-app-checks:0.3.0")
 }
 ```
 
-It has no code: it adds a `<queries>` block naming seventeen packages and a
-flag that turns the checks on. Keep both artifacts on the same version; Gradle
-refuses to mix them. If you add it, declare "App activity: Installed apps" in
-your Data safety form.
+It adds a `<queries>` block naming seventeen packages and the provider that
+turns the checks on, which you pass to `load`:
+
+```kotlin
+val fingerly = Fingerly.load(
+    context,
+    apiKey = "fly_pk_production_…",
+    appChecks = FingerlyAppChecks(),
+)
+```
+
+Keep both artifacts on the same version; Gradle refuses to mix them. If you
+add it, declare "App activity: Installed apps" in your Data safety form.
 
 ## Optional: Play Integrity
 
@@ -58,8 +67,8 @@ Integrity verdicts to your Fingerly events, add the provider and pass it to
 
 ```kotlin
 dependencies {
-    implementation("io.fingerly:fingerly:0.2.0")
-    implementation("io.fingerly:fingerly-play-integrity:0.2.0")
+    implementation("io.fingerly:fingerly:0.3.0")
+    implementation("io.fingerly:fingerly-play-integrity:0.3.0")
 }
 ```
 
@@ -67,7 +76,8 @@ dependencies {
 val fingerly = Fingerly.load(
     context,
     apiKey = "fly_pk_production_…",
-    integrityTokenProvider = PlayIntegrityTokenProvider(context, cloudProjectNumber = 123456789012L),
+    playIntegrity = FingerlyPlayIntegrity(),
+    playIntegrityCloudProjectNumber = 123456789012L,
 )
 ```
 
@@ -86,7 +96,7 @@ What this SDK collects, for your app's Data safety form. Every purpose is
 | Data type | Collected | What it is |
 |---|---|---|
 | Location: Approximate location | Yes | Coarse location derived from the IP address on the server |
-| Device or other IDs | Yes | A random install ID and the key attestation certificate chain |
+| Device or other IDs | Yes | A random install ID, the key attestation certificate chain and, only with `fingerly-play-integrity`, a Play Integrity token |
 | App activity: App interactions | Yes | Launch count, install age |
 | App activity: Installed apps | Only with `fingerly-app-checks` | Three yes/no values: a root manager, a hooking-framework manager, an app cloner is installed |
 | App info and performance: Diagnostics | Yes | Device model and OS build, hardware class, display, battery, free-storage share, network transport, VPN and proxy, whether any accessibility service is on (yes or no), boot and mount state, hashes of library and thread names |
