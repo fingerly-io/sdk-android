@@ -22,7 +22,7 @@ Otherwise add the `maven` line to the `repositories` block of your module's
 
 ```kotlin
 dependencies {
-    implementation("io.fingerly:fingerly:0.3.0")
+    implementation("io.fingerly:fingerly:0.4.0")
 }
 ```
 
@@ -40,8 +40,8 @@ package visibility it declares. Add it only if your app can:
 
 ```kotlin
 dependencies {
-    implementation("io.fingerly:fingerly:0.3.0")
-    implementation("io.fingerly:fingerly-app-checks:0.3.0")
+    implementation("io.fingerly:fingerly:0.4.0")
+    implementation("io.fingerly:fingerly-app-checks:0.4.0")
 }
 ```
 
@@ -67,8 +67,8 @@ Integrity verdicts to your Fingerly events, add the provider and pass it to
 
 ```kotlin
 dependencies {
-    implementation("io.fingerly:fingerly:0.3.0")
-    implementation("io.fingerly:fingerly-play-integrity:0.3.0")
+    implementation("io.fingerly:fingerly:0.4.0")
+    implementation("io.fingerly:fingerly-play-integrity:0.4.0")
 }
 ```
 

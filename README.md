@@ -35,7 +35,7 @@ This repository holds the installation notes and licence for the SDK. The SDK is
    }
 
    dependencies {
-       implementation("io.fingerly:fingerly:0.3.0")
+       implementation("io.fingerly:fingerly:0.4.0")
    }
    ```
 
